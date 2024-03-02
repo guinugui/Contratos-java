@@ -11,8 +11,7 @@ public class Funcionario {
 	private String nome;
 	private nivelDoFuncionario nivel;
 	private Double salarioBase;
-	
-	
+
 	private Departamento departamento;
 	private List<horaPorContrato> contratos = new ArrayList<>();
 
@@ -62,11 +61,11 @@ public class Funcionario {
 	public void setContratos(List<horaPorContrato> contratos) {
 		this.contratos = contratos;
 	}
-	
-	
+
 	public void addContratos(horaPorContrato contrato) {
 		contratos.add(contrato);
 	}
+
 	public void removeContratos(horaPorContrato contrato) {
 		contratos.remove(contrato);
 	}
@@ -74,20 +73,15 @@ public class Funcionario {
 	public Double renda(Integer ano, Integer mes) {
 		double sum = salarioBase;
 		Calendar cal = Calendar.getInstance();
-		for(horaPorContrato c : contratos) {
+		for (horaPorContrato c : contratos) {
 			cal.setTime(c.getData());
 			int ANO = cal.get(Calendar.YEAR);
-			int MES =1 + cal.get(Calendar.MONTH);
-			if(ANO == ano && MES == mes) {
+			int MES = 1 + cal.get(Calendar.MONTH);
+			if (ANO == ano && MES == mes) {
 				sum += c.valorTotal();
 			}
 		}
 		return sum;
 	}
-	
-	
-	
-	
-	
-	
+
 }
